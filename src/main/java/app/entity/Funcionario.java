@@ -33,6 +33,6 @@ public class Funcionario {
 	@NotNull (message = "matricula não pode ser nulo")
 	private String matricula;
 
-	@OneToMany (mappedBy = "funcionario")
-	private List<Venda> venda;
+	//@OneToMany (mappedBy = "funcionario")
+	//private List<Venda> venda;
 }
