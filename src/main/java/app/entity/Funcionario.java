@@ -24,13 +24,13 @@ public class Funcionario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idFuncionario;
 	
-	@NotNull
+	@NotNull (message = "nomeFunci não pode ser nulo")
 	private String nomeFunci;
 	
-	@NotNull
+	@NotNull (message = "idadeFunci não pode ser nulo")
 	private int idadeFunci;
 	
-	@NotNull
+	@NotNull (message = "matricula não pode ser nulo")
 	private String matricula;
 
 	@OneToMany (mappedBy = "funcionario")
