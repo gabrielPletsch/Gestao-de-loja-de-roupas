@@ -32,4 +32,7 @@ public class Cliente {
 	
 	@NotNull(message = "Campo teleofne não pode ser nulo")
 	private int telefone;
+	
+	//@OneToMany (mappedBy = "cliente")
+	//private List<Venda> venda;
 }

@@ -79,5 +79,20 @@ public class ClienteController {
 		
 	}
 	
+	/*
+	@GetMapping("/findByVenda")
+	public ResponseEntity<List<Cliente>> findByMarca (@RequestParam int id){
+		
+		try {
+			
+			List<Cliente> lista = this.clienteService.findByVenda(id);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}	
+	}
+	*/
 	
 }

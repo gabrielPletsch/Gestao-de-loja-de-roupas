@@ -49,4 +49,11 @@ public class ClienteService {
 		return this.clienteRepository.findByCpfCliente(cpf);
 	}
 	
+	
+	/*public List<Cliente> findByVenda(long id(){
+		Venda venda = new venda();
+		venda.setIdVenda(id);
+		return this.clienteRepository.findByVenda(venda);
+	}*/
+	
 }

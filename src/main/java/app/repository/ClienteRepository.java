@@ -8,11 +8,11 @@ import app.entity.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente,Long> {
 	
-	//public List<Cliente> findByNomeCliente(String nome);
+	public List<Cliente> findByNomeCliente(String nome);
 	
-	//public List<Cliente> findByCpfCliente (String cpf);
+	public List<Cliente> findByCpfCliente (String cpf);
 	
-	//public List<Cliente> findByIdadeCliente (int idade);
+	public List<Cliente> findByIdadeCliente (int idade);
 	
-	//public List<Cliente> findByTelefoneCliente (int telefone);
+	public List<Cliente> findByTelefoneCliente (int telefone);
 }
