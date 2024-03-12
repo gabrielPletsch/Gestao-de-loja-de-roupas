@@ -40,7 +40,7 @@ public class FuncionarioController {
 		}
 	}
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/update/{idFuncionario}")
 	public ResponseEntity<String> update(@RequestBody Funcionario funcionario, @PathVariable long idFuncionario) {
 	    try {
 	        String mensagem = this.funcionarioService.update(idFuncionario, funcionario);
@@ -67,7 +67,7 @@ public class FuncionarioController {
 		
 	}
 	
-	@GetMapping("/findById/{id}")
+	@GetMapping("/findById/{idFuncionario}")
 	public ResponseEntity<Funcionario> findById(@PathVariable long idFuncionario){
 		
 		try {
@@ -81,7 +81,7 @@ public class FuncionarioController {
 		
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/delete/{idFuncionario}")
 	public ResponseEntity<String> delete(@PathVariable long idFuncionario){
 		
 		try {
@@ -95,12 +95,12 @@ public class FuncionarioController {
 	}
 	
 	
-	@GetMapping("/findByNomeFunci")
-	public ResponseEntity<List<Funcionario>> findByMarcaNome (@RequestParam String nome){
+	@GetMapping("/findByNomeFunc")
+	public ResponseEntity<List<Funcionario>> findByNomeFunc (@RequestParam String nomeFunc){
 		
 		try {
 			
-			List<Funcionario> lista = this.funcionarioService.findByNomeFunci(nome);
+			List<Funcionario> lista = this.funcionarioService.findByNomeFunci(nomeFunc);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -111,12 +111,12 @@ public class FuncionarioController {
 		
 	}
 	
-	@GetMapping("/findByIdadeFunci")
-	public ResponseEntity<List<Funcionario>> findByIdadeFunci (@RequestParam int idade){
+	@GetMapping("/findByIdadeFunc")
+	public ResponseEntity<List<Funcionario>> findByIdadeFunci (@RequestParam int idadeFunc){
 		
 		try {
 			
-			List<Funcionario> lista = this.funcionarioService.findByIdadeFunci(idade);
+			List<Funcionario> lista = this.funcionarioService.findByIdadeFunci(idadeFunc);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
