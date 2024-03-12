@@ -1,6 +1,6 @@
 package app.entity;
 
-import java.util.List;
+//import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
