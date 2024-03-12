@@ -41,13 +41,13 @@ public class ClienteService {
 		return cliente;
 	}
 	
-	public List<Cliente> findByNomeCliente(String nome){
-		return this.clienteRepository.findByNomeCliente(nome);
-	}
-	
-	public List<Cliente> findByCpfCliente(String cpf){
-		return this.clienteRepository.findByCpfCliente(cpf);
-	}
+//	public List<Cliente> findByNomeCliente(String nome){
+//		return this.clienteRepository.findByNomeCliente(nome);
+//	}
+//	
+//	public List<Cliente> findByCpfCliente(String cpf){
+//		return this.clienteRepository.findByCpfCliente(cpf);
+//	}
 	
 	
 	/*public List<Cliente> findByVenda(long id(){

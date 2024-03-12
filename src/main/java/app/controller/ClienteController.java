@@ -39,7 +39,7 @@ public class ClienteController {
 	}
 		
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/update/{idClient}")
 	public ResponseEntity<String> update(@RequestBody Cliente cliente, @PathVariable long idClient){
 		try {
 			List<Cliente> lista = this.clienteService.listAll();
@@ -65,7 +65,7 @@ public class ClienteController {
 
 		}
 		
-	}@GetMapping("/findById/{id}")
+	}@GetMapping("/findById/{idClient}")
 	public ResponseEntity<Cliente> findById(@PathVariable long idClient){
 		
 		try {
