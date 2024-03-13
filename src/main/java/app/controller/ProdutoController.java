@@ -99,10 +99,10 @@ public class ProdutoController {
 
 	@GetMapping("/findByNomeProd")
 
-	public ResponseEntity<List<Produto>> findByNomeProd(@RequestParam String nome) {
+	public ResponseEntity<List<Produto>> findByNomeProd(@RequestParam String nomeProd) {
 		
 		try {
-			List<Produto> lista = this.produtoService.findByNomeProd(nome);
+			List<Produto> lista = this.produtoService.findByNomeProd(nomeProd);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -113,10 +113,10 @@ public class ProdutoController {
 
 	@GetMapping("/findByValorProd")
 
-	public ResponseEntity<List<Produto>> findByMarcaNome(@RequestParam double valor) {
+	public ResponseEntity<List<Produto>> findByValorProd(@RequestParam double valorProd) {
 		
 		try {
-			List<Produto> lista = this.produtoService.findByValorProd(valor);
+			List<Produto> lista = this.produtoService.findByValorProd(valorProd);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
