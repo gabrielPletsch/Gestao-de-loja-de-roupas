@@ -109,6 +109,10 @@ public class ClienteController {
 		}
 	}
 	
+	
+	//-------
+	
+	
 	@GetMapping("/findByCpfCliente")
 	public ResponseEntity<List<Cliente>> findByCpfCliente (@RequestParam String cpfCliente){
 		
@@ -125,7 +129,7 @@ public class ClienteController {
 		
 	}
 	@GetMapping("/findByTelefoneCliente")
-	public ResponseEntity<List<Cliente>> buscarClienteIdade (@RequestParam int TelefoneCliente){
+	public ResponseEntity<List<Cliente>> findByTelefoneCliente (@RequestParam int TelefoneCliente){
 		
 		try {
 			List<Cliente> lista = this.clienteService.findByTelefoneCliente(TelefoneCliente);

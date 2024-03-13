@@ -48,14 +48,6 @@ public class ProdutoService {
 	
 	//-----
 	
-	
-	
-	public List<Produto> findByIdProd(long idProduto){
-		Produto produto = new Produto();
-		produto.setIdProd(idProduto);
-		return this.produtoRepository.findByIdProd(idProduto);
-	}
-	
 
 	public List<Produto> findByNomeProd(String nome) {
 		return this.produtoRepository.findByNomeProd(nome);
@@ -67,8 +59,5 @@ public class ProdutoService {
 
 	}
 	
-	//public List<Produto> filterStartWord (String nomeProd){
-	//	return this.produtoRepository.filterStartWord(nomeProd);
-	//}
 
 }

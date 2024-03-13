@@ -111,12 +111,12 @@ public class VendaController {
 		
 	}
 	
-	@GetMapping("/valorVenda")
-	public ResponseEntity<List<Venda>> valorVenda (@RequestParam double valorVenda){
+	@GetMapping("/findyByValorVenda")
+	public ResponseEntity<List<Venda>> findyByValorVenda (@RequestParam double valorVenda){
 		
 		try {
 			
-			List<Venda> lista = this.vendaService.vendaValor(valorVenda);
+			List<Venda> lista = this.vendaService.findByVendaValor(valorVenda);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {

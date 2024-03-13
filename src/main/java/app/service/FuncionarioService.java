@@ -17,13 +17,13 @@ public class FuncionarioService {
 	
 	public String save(Funcionario funcionario) {
 		this.funcionarioRepository.save(funcionario);
-		return funcionario.getNomeFunci()+"Funcionario salvo com sucesso!!";
+		return funcionario.getNomeFunci()+" Funcionario salvo com sucesso!!";
 	}
 	
 	public String update (long id, Funcionario funcionario) {
 		funcionario.setIdFunc(id);
 		this.funcionarioRepository.save(funcionario);
-		return funcionario.getNomeFunci()+"Atualizado funcionario com sucesso!!";
+		return funcionario.getNomeFunci()+" Atualizado funcionario com sucesso!!";
 	}
 	
 	public List<Funcionario> listAll(){
@@ -32,7 +32,7 @@ public class FuncionarioService {
 	
 	public String delete (long idFuncionario) {
 		this.funcionarioRepository.deleteById(idFuncionario);;
-		return "Funcionario deletado com sucesso";
+		return " Funcionario deletado com sucesso";
 	}
 	
 	public Funcionario findById(long idFuncionario) {
@@ -57,11 +57,5 @@ public class FuncionarioService {
 		return this.funcionarioRepository.findByMatricula(matricula);
 	}
 	
-
-	public List<Funcionario> findByIdFunc(long idFuncionario){
-		Funcionario funcionario = new Funcionario();
-		funcionario.setIdFunc(idFuncionario);
-		return this.funcionarioRepository.findByIdFunc(idFuncionario);
-	}
 	
 }

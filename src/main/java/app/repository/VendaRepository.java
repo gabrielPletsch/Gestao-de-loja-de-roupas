@@ -16,6 +16,6 @@ public interface VendaRepository extends JpaRepository<Venda, Long> {
 	public List<Venda> findByFuncionarioNomeFunci(String nome);
 	
 	@Query("FROM Venda v WHERE v.valorVenda > :valorVenda")
-	public List<Venda> vendaValor(double valorVenda);
+	public List<Venda> findByVendaValor(double valorVenda);
 	
 }

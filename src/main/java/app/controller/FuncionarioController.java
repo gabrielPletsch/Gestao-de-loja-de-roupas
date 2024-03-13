@@ -144,16 +144,4 @@ public class FuncionarioController {
 		}
 		
 	}
-
-	@GetMapping("/findByIdFunc")
-	public ResponseEntity<List<Funcionario>> findByIdFunc(@RequestParam long idFuncionario){
-		
-		try {
-			List<Funcionario> lista = this.funcionarioService.findByIdFunc(idFuncionario);
-			return new ResponseEntity<>(lista, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-		}
-		
-	}
 }

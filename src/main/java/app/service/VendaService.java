@@ -52,8 +52,8 @@ public class VendaService {
 	
 	 //------
 	
-	public List<Venda> vendaValor(double valorVenda){
-		return this.vendaRepository.vendaValor(valorVenda);
+	public List<Venda> findByVendaValor(double valorVenda){
+		return this.vendaRepository.findByVendaValor(valorVenda);
 	}
 	
 	public List<Venda> findByNomeFunc(String nome){
