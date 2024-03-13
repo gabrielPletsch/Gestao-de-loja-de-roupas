@@ -36,8 +36,6 @@ public class ClienteService {
 	}
 	
 	
-	//------
-	
 	
 	public Cliente findById(long idClient) {
 

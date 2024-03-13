@@ -33,8 +33,14 @@ public class Cliente {
 	@NotNull(message = "Campo idade não pode ser nulo")
 	private int idadeCliente;
 	
+	@NotNull(message = "Campo idade não pode ser nulo")
+	private int idade_client;
+	
 	@NotNull(message = "Campo telefone não pode ser nulo")
 	private int telefoneCliente;
+	
+	@NotNull(message = "Campo telefone não pode ser nulo")
+	private int telefone;
 	
 	@OneToMany (mappedBy = "cliente")
 	private List<Venda> venda;
