@@ -95,6 +95,8 @@ public class FuncionarioController {
 	}
 	
 	
+	//-------
+	
 	@GetMapping("/findByNomeFunc")
 	public ResponseEntity<List<Funcionario>> findByNomeFunc (@RequestParam String nomeFunc){
 		
@@ -143,19 +145,15 @@ public class FuncionarioController {
 		
 	}
 
-	/*
-	@GetMapping("/findByVenda")
-	public ResponseEntity<List<Funcionario>> findByMarca (@RequestParam int id){
+	@GetMapping("/findByIdFunc")
+	public ResponseEntity<List<Funcionario>> findByIdFunc(@RequestParam long idFuncionario){
 		
 		try {
-			
-			List<Funcinario> lista = this.funcionarioService.findByVenda(id);
+			List<Funcionario> lista = this.funcionarioService.findByIdFunc(idFuncionario);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
-			
 		} catch (Exception e) {
-			
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-		}	
+		}
+		
 	}
-	*/
 }

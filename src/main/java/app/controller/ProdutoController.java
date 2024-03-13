@@ -97,6 +97,10 @@ public class ProdutoController {
 
 	}
 
+	
+	//------
+	
+	
 	@GetMapping("/findByNomeProd")
 
 	public ResponseEntity<List<Produto>> findByNomeProd(@RequestParam String nomeProd) {
@@ -123,6 +127,37 @@ public class ProdutoController {
 
 		}
 
+	}
+	
+	@GetMapping("/findByIdProd")
+	
+	public ResponseEntity<List<Produto>> findByIdProd(@RequestParam long idProduto){
+		
+		try {
+			
+			List<Produto> lista = this.produtoService.findByIdProd(idProduto);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/filterStartWord")
+	public ResponseEntity<List<Produto>> filterStartWord(@RequestParam String nomeProduto){
+		
+		try {
+			List<Produto> lista = this.produtoService.filterStartWord(nomeProduto);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+			
 	}
 
 }

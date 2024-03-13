@@ -21,7 +21,7 @@ public class FuncionarioService {
 	}
 	
 	public String update (long id, Funcionario funcionario) {
-		funcionario.setIdFuncionario(id);
+		funcionario.setIdFunc(id);
 		this.funcionarioRepository.save(funcionario);
 		return funcionario.getNomeFunci()+"Atualizado funcionario com sucesso!!";
 	}
@@ -42,6 +42,9 @@ public class FuncionarioService {
 	}
 	
 	
+	 //------
+	
+	
 	public List<Funcionario> findByNomeFunci(String nome){
 		return this.funcionarioRepository.findByNomeFunci(nome);
 	}
@@ -54,14 +57,11 @@ public class FuncionarioService {
 		return this.funcionarioRepository.findByMatricula(matricula);
 	}
 	
-	/*
-	public List<Funcionario> findByVenda(lond id(){
-		Venda venda = new venda();
-		venda.setIdVenda(id);
-		return this.funcionarioRepository.findByVenda(venda);
+
+	public List<Funcionario> findByIdFunc(long idFuncionario){
+		Funcionario funcionario = new Funcionario();
+		funcionario.setIdFunc(idFuncionario);
+		return this.funcionarioRepository.findByIdFunc(idFuncionario);
 	}
-	*/
-	
-	
 	
 }

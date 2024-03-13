@@ -22,7 +22,7 @@ public class ProdutoService {
 	}
 
 	public String update(long id, Produto produto) {
-		produto.setIdProduto(id);
+		produto.setIdProd(id);
 		this.produtoRepository.save(produto);
 		return produto.getNomeProd() + " Produto Atualizado com Sucesso";
 
@@ -44,6 +44,18 @@ public class ProdutoService {
 		return "Produto Deletado com Sucesso!";
 
 	}
+	
+	
+	//-----
+	
+	
+	
+	public List<Produto> findByIdProd(long idProduto){
+		Produto produto = new Produto();
+		produto.setIdProd(idProduto);
+		return this.produtoRepository.findByIdProd(idProduto);
+	}
+	
 
 	public List<Produto> findByNomeProd(String nome) {
 		return this.produtoRepository.findByNomeProd(nome);
@@ -53,6 +65,10 @@ public class ProdutoService {
 	public List<Produto> findByValorProd(double valor) {
 		return this.produtoRepository.findByValorProd(valor);
 
+	}
+	
+	public List<Produto> filterStartWord (String nomeProd){
+		return this.produtoRepository.filterStartWord(nomeProd);
 	}
 
 }

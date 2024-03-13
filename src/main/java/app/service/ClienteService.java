@@ -35,6 +35,10 @@ public class ClienteService {
 		return " Cliente deletado com sucesso";
 	}
 	
+	
+	//------
+	
+	
 	public Cliente findById(long idClient) {
 
 		Cliente cliente = this.clienteRepository.findById(idClient).get();
@@ -50,10 +54,8 @@ public class ClienteService {
 	}
 	
 	
-	/*public List<Cliente> findByVenda(long id(){
-		Venda venda = new venda();
-		venda.setIdVenda(id);
-		return this.clienteRepository.findByVenda(venda);
-	}*/
+	public List<Cliente> findByTelefoneCliente(int telefone){
+		return this.clienteRepository.findByTelefoneCliente(telefone);
+	}
 	
 }

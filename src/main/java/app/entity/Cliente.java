@@ -1,9 +1,12 @@
 package app.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,11 +31,11 @@ public class Cliente {
 	private String cpfCliente;
 	
 	@NotNull(message = "Campo idade não pode ser nulo")
-	private int idadeClient;
+	private int idadeCliente;
 	
 	@NotNull(message = "Campo telefone não pode ser nulo")
-	private int telefone;
+	private int telefoneCliente;
 	
-	//@OneToMany (mappedBy = "cliente")
-	//private List<Venda> venda;
+	@OneToMany (mappedBy = "cliente")
+	private List<Venda> venda;
 }

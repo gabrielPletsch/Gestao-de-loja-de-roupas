@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Venda;
@@ -94,7 +95,56 @@ public class VendaController {
 		
 	}
 	
+
+	//------
 	
+	@GetMapping("/findByNomeFunc")
+	public ResponseEntity<List<Venda>> findByNomeFunc (@RequestParam String nomeFunc){
+		
+		try {
+			
+			List<Venda> lista = this.vendaService.findByNomeFunc(nomeFunc);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/valorVenda")
+	public ResponseEntity<List<Venda>> valorVenda (@RequestParam double valorVenda){
+		
+		try {
+			
+			List<Venda> lista = this.vendaService.vendaValor(valorVenda);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/findByCliente")
+	public ResponseEntity<List<Venda>> findByCliente (@RequestParam long idCliente){
+		
+		try {
+			
+			List<Venda> lista = this.vendaService.findByCliente(idCliente);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
 	
 	 
 }

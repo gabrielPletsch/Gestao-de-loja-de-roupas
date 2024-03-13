@@ -1,11 +1,14 @@
 package app.entity;
 
+import java.util.List;
+
 //import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 //import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,7 +25,7 @@ public class Funcionario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idFuncionario;
+	private long idFunc;
 	
 	@NotNull (message = "nomeFunci não pode ser nulo")
 	private String nomeFunci;
@@ -33,6 +36,6 @@ public class Funcionario {
 	@NotNull (message = "matricula não pode ser nulo")
 	private String matricula;
 
-	//@OneToMany (mappedBy = "funcionario")
-	//private List<Venda> venda;
+	@OneToMany (mappedBy = "funcionario")
+	private List<Venda> venda;
 }

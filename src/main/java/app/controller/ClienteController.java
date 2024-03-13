@@ -124,20 +124,18 @@ public class ClienteController {
 		}
 		
 	}
-	/*
-	@GetMapping("/findByVenda")
-	public ResponseEntity<List<Cliente>> findByMarca (@RequestParam int id){
+	@GetMapping("/findByTelefoneCliente")
+	public ResponseEntity<List<Cliente>> buscarClienteIdade (@RequestParam int TelefoneCliente){
 		
 		try {
-			
-			List<Cliente> lista = this.clienteService.findByVenda(id);
+			List<Cliente> lista = this.clienteService.findByTelefoneCliente(TelefoneCliente);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
 			
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-		}	
+		}
+			
 	}
-	*/
 	
 }
