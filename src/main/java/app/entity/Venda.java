@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,15 +29,15 @@ public class Venda {
 	private String enderecoVenda;
 	private int valorVenda;
 	
-//	@ManyToOne (cascade = CascadeType.ALL)
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("venda")
 	private Funcionario funcionario;
 	
-//	@ManyToOne (cascade = CascadeType.ALL)
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("venda")
 	private Cliente cliente;
 	
-//	ManyToMany(cascade = CascadeType.ALL)
+	//ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable (name =  "venda_produto")
 	private List<Produto> produto;
 	
