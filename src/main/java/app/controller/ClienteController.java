@@ -39,7 +39,7 @@ public class ClienteController {
 	}
 		
 	
-	@PutMapping("/update/{idClient}")
+	@PutMapping("+")
 	public ResponseEntity<String> update(@RequestBody Cliente cliente, @PathVariable long idClient){
 		try {
 			String mensagem = this.clienteService.update(idClient, cliente);
