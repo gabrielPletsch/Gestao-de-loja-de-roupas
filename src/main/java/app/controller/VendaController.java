@@ -39,7 +39,7 @@ public class VendaController {
 		
 	}
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/update/{idVenda}")
 	public ResponseEntity<String> update(@RequestBody Venda venda, @PathVariable int idVenda) {
 		
 		try {
@@ -127,21 +127,7 @@ public class VendaController {
 		
 	}
 	
-	@GetMapping("/findByCliente")
-	public ResponseEntity<List<Venda>> findByCliente (@RequestParam long idCliente){
-		
-		try {
-			
-			List<Venda> lista = this.vendaService.findByCliente(idCliente);
-			return new ResponseEntity<>(lista, HttpStatus.OK);
-			
-		} catch (Exception e) {
-			
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 
-		}
-		
-	}
 	
 	 
 }

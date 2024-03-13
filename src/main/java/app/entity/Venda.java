@@ -34,7 +34,7 @@ public class Venda {
 	
 	@NotNull(message = "ValorVenda não pode ser nulo")
 	private double valorVenda;
-	private double valorFinal;
+	//private double valorFinal;
 	
 	@ManyToOne (cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("venda")
