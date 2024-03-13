@@ -25,7 +25,7 @@ public class Cliente {
 	private String nomeCliente;
 	
 	@NotNull(message = "Campo  CPF não pode ser nulo")
-	private String cpf;
+	private String cpfCliente;
 	
 	@NotNull(message = "Campo idade não pode ser nulo")
 	private int idadeClient;

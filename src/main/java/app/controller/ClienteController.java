@@ -42,7 +42,6 @@ public class ClienteController {
 	@PutMapping("/update/{idClient}")
 	public ResponseEntity<String> update(@RequestBody Cliente cliente, @PathVariable long idClient){
 		try {
-			List<Cliente> lista = this.clienteService.listAll();
 			String mensagem = this.clienteService.update(idClient, cliente);
 			 return new ResponseEntity<String>(mensagem, HttpStatus.OK);
 			
@@ -110,7 +109,21 @@ public class ClienteController {
 		}
 	}
 	
-	
+	@GetMapping("/findByCpfCliente")
+	public ResponseEntity<List<Cliente>> findByCpfCliente (@RequestParam String cpfCliente){
+		
+		try {
+			
+			List<Cliente> lista = this.clienteService.findByCpfCliente(cpfCliente);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
 	/*
 	@GetMapping("/findByVenda")
 	public ResponseEntity<List<Cliente>> findByMarca (@RequestParam int id){
