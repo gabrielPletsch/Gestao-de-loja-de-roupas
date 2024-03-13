@@ -65,7 +65,8 @@ public class ClienteController {
 
 		}
 		
-	}@GetMapping("/findById/{idClient}")
+	}
+	@GetMapping("/findById/{idClient}")
 	public ResponseEntity<Cliente> findById(@PathVariable long idClient){
 		
 		try {
@@ -78,6 +79,37 @@ public class ClienteController {
 		}
 		
 	}
+	
+	@GetMapping("/findByNomeCliente")
+	public ResponseEntity<List<Cliente>> findByNomeCliente (@RequestParam String nomeCliente){
+		
+		try {
+			
+			List<Cliente> lista = this.clienteService.findByNomeCliente(nomeCliente);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+
+	
+	@DeleteMapping("/delete/{idCliente}")
+	public ResponseEntity<String> delete(@PathVariable long idCliente){
+		
+		try {
+			
+			String mensagem = this.clienteService.delete(idCliente);
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<String>("Ocorreu o seguinte erro: "+e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	
 	/*
 	@GetMapping("/findByVenda")

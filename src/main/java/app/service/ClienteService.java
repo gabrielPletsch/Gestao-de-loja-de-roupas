@@ -16,14 +16,14 @@ public class ClienteService {
 	
 	public String save(Cliente cliente) {
 		this.clienteRepository.save(cliente);
-		return cliente.getNomeClient()+"Cliente Salvo!";
+		return cliente.getNomeCliente()+" Cliente Salvo!";
 		
 	}
 	
 	public String update (long id, Cliente cliente) {
 		cliente.setIdCliente(id);
 		this.clienteRepository.save(cliente);
-		return cliente.getNomeClient()+"Atualizado funcionario com sucesso!!";
+		return cliente.getNomeCliente()+" Atualizado funcionario com sucesso!!";
 	}
 	
 	public List<Cliente> listAll(){
@@ -32,7 +32,7 @@ public class ClienteService {
 	
 	public String delete (long idClient) {
 		this.clienteRepository.deleteById(idClient);;
-		return "Cliente deletado com sucesso";
+		return " Cliente deletado com sucesso";
 	}
 	
 	public Cliente findById(long idClient) {
@@ -41,9 +41,9 @@ public class ClienteService {
 		return cliente;
 	}
 	
-//	public List<Cliente> findByNomeCliente(String nome){
-//		return this.clienteRepository.findByNomeCliente(nome);
-//	}
+	public List<Cliente> findByNomeCliente(String nome){
+		return this.clienteRepository.findByNomeCliente(nome);
+	}
 //	
 //	public List<Cliente> findByCpfCliente(String cpf){
 //		return this.clienteRepository.findByCpfCliente(cpf);
