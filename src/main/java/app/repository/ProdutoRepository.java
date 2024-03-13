@@ -13,7 +13,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	
 	public List<Produto> findByNomeProd(String nomeProd);
 	
-	public List<Produto> filterStartWord (String nomeProd);
+	//public List<Produto> filterStartWord (String nomeProd);
 	
 	@Query("FROM Produto p WHERE p.valorProd > :valorProd")
 	public List<Produto> findByValorProd(double valorProd);

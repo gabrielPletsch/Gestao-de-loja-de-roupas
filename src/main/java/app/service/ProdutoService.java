@@ -67,8 +67,8 @@ public class ProdutoService {
 
 	}
 	
-	public List<Produto> filterStartWord (String nomeProd){
-		return this.produtoRepository.filterStartWord(nomeProd);
-	}
+	//public List<Produto> filterStartWord (String nomeProd){
+	//	return this.produtoRepository.filterStartWord(nomeProd);
+	//}
 
 }

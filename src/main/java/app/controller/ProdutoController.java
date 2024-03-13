@@ -146,6 +146,7 @@ public class ProdutoController {
 		
 	}
 	
+	/*
 	@GetMapping("/filterStartWord")
 	public ResponseEntity<List<Produto>> filterStartWord(@RequestParam String nomeProduto){
 		
@@ -159,5 +160,6 @@ public class ProdutoController {
 		}
 			
 	}
+	*/
 
 }

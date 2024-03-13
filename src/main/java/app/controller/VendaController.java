@@ -19,9 +19,6 @@ import app.entity.Venda;
 import app.service.VendaService;
 
 
-
-
-
 @RestController
 @RequestMapping("/api/venda")
 public class VendaController {
