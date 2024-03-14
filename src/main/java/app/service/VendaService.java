@@ -1,10 +1,12 @@
 package app.service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import app.entity.Produto;
 import app.entity.Venda;
 import app.repository.VendaRepository;
 
@@ -14,24 +16,26 @@ public class VendaService {
 	@Autowired
 	private VendaRepository vendaRepository;
 
-	public String save(Venda venda) {
+	/*public String save(Venda venda) {
 		this.vendaRepository.save(venda);
 		return venda.getEnderecoVenda()+ " salvo com sucesso";
-	} 
+	} */
 	
-	/*
+	
 	public String save(Venda venda) {
 		this.vendaRepository.save(venda);
 		List <Produto> produtos = venda.getProduto();
+		DecimalFormat df = new DecimalFormat("#.##");
 		double valorFinal = 0;
 		for (Produto produto : produtos) {
 			valorFinal += produto.getValorProd();
 		}
+		String valorFormatado = df.format(valorFinal);
 		venda.setValorFinal(valorFinal);
 		vendaRepository.save(venda);
-		return valorFinal +" Pedido realizado com sucesso";
+		return valorFormatado +" foi o valor total da compra!";
 	}
-	 */
+	 
 
 	
 	public String update(long idVenda, Venda venda) {
