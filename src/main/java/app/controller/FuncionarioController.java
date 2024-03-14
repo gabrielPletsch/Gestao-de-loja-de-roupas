@@ -1,4 +1,5 @@
 package app.controller;
+//Responsável por receber as requisições HTTP,
 
 import java.util.List;
 
@@ -18,20 +19,23 @@ import org.springframework.web.bind.annotation.RestController;
 import app.entity.Funcionario;
 import app.service.FuncionarioService;
 
+//Permite criar controladores que retornam dados diretamente no corpo das respostas HTTP
 @RestController
+//Usada para mapear solicitações HTTP e o URL 
 @RequestMapping("/api/funcionario")
 public class FuncionarioController {
 
+	// Dependências automática elimina a necessdidade de configurar manualmente XML ou JAVA
 	@Autowired
-	private FuncionarioService funcionarioService;
+	private FuncionarioService funcionarioService;//Referência para Service
 	
-	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Funcionario funcionario)  {
+	@PostMapping("/save")//endpoint para http save
+	public ResponseEntity<String> save(@RequestBody Funcionario funcionario) {//recebe um objeto do "Front/Json/Postman"
 	
 		try {
 			
-			String mensagem = this.funcionarioService.save(funcionario);
-			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
+			String mensagem = this.funcionarioService.save(funcionario); //responsável por realizar a lógica para salvar e retorna
+			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);//Se acontecer algum erro
 			
 		} catch (Exception e) {
 			

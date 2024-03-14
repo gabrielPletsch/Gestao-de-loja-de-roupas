@@ -1,4 +1,6 @@
 package app.service;
+//Intermediário entre a camada de controle(Repository) e a camada de acesso a dados (Controller)
+//Contém a lógica de negócios da aplicação.
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -10,58 +12,66 @@ import app.entity.Produto;
 import app.entity.Venda;
 import app.repository.VendaRepository;
 
+//Indica para a aplicação (STS/JPA) que este package é uma service
 @Service
 public class VendaService {
 	
+	// Dependências automática elimina a necessdidade de configurar manualmente XML ou JAVA
 	@Autowired
-	private VendaRepository vendaRepository;
+	private VendaRepository vendaRepository; //Ligação entre Service Repository
 
+	//CRUD
+	
 	/*public String save(Venda venda) {
 		this.vendaRepository.save(venda);
 		return venda.getEnderecoVenda()+ " salvo com sucesso";
 	} */
 	
 	
+	//Create	
+	//For para percorrer os produtos dentro da venda e retornar o valor final
 	public String save(Venda venda) {
 		this.vendaRepository.save(venda);
 		List <Produto> produtos = venda.getProduto();
-		DecimalFormat df = new DecimalFormat("#.##");
+		DecimalFormat df = new DecimalFormat("##,##"); //Formatação do Valor Final
 		double valorFinal = 0;
-		for (Produto produto : produtos) {
+		for (Produto produto : produtos) {		
 			valorFinal += produto.getValorProd();
 		}
 		String valorFormatado = df.format(valorFinal);
-		venda.setValorFinal(valorFinal);
+		venda.setValorFinal(valorFinal);	//Retornar o valor final 
 		vendaRepository.save(venda);
 		return valorFormatado +" foi o valor total da compra!";
 	}
 	 
-
+	//Read
+	public List<Venda> listAll() {
+		return this.vendaRepository.findAll();
+	}
+	public Venda findById(long idVenda) {
+		Venda venda = this.vendaRepository.findById(idVenda).get();
+		return venda;
+	}
 	
+	//Update
 	public String update(long idVenda, Venda venda) {
 		venda.setIdVenda(idVenda);
 		this.vendaRepository.save(venda);
 		return " Venda Alterada com sucesso";
 	}
 	
-	public List<Venda> listAll() {
-		return this.vendaRepository.findAll();
+	//Delete
+	public String delete(long idVenda) { //Recebe o ID da excluisao
+		this.vendaRepository.deleteById(idVenda);//Define se os ID existe(Repository) e exclui o objeto no (DB)
+		return " Venda deletada"; //Retorna a mensagem 
 	}
 	
-	public Venda findById(long idVenda) {
-		Venda venda = this.vendaRepository.findById(idVenda).get();
-		return venda;
-	}
 	
-	public String delete(long idVenda) {
-		this.vendaRepository.deleteById(idVenda);
-		return " Venda deletada";
-	}
+	 //-- Consulta ao SGDB (Read)--
 	
-	 //------
 	
-	public List<Venda> findByVendaValor(double valorVenda){
-		return this.vendaRepository.findByVendaValor(valorVenda);
+	public List<Venda> findByVendaValor(double valorVenda){ //Recebe o valorVenda(parametro)
+		return this.vendaRepository.findByVendaValor(valorVenda); // Mnada para o repository fazer a busca no DB
 	}
 	
 	public List<Venda> findByNomeCliente(String nomeCliente){

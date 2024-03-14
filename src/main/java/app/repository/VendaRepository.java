@@ -1,4 +1,6 @@
 package app.repository;
+// Define métodos para operações de banco de dados relacionadas à entidade Venda
+
 
 import java.util.List;
 
@@ -15,7 +17,9 @@ public interface VendaRepository extends JpaRepository<Venda, Long> {
 	
 	public List<Venda> findByFuncionarioNomeFunci(String nomeFunci);
 	
-	@Query("FROM Venda v WHERE v.valorVenda >= :valorVenda")
+	// É usada como filtro, se algum parametro acontecer vai ser filtrado
+	@Query("FROM Venda v "
+			+ "WHERE v.valorVenda >= :valorVenda")
 	public List<Venda> findByVendaValor(double valorVenda);
 	
 }

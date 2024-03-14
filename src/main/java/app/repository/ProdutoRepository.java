@@ -1,4 +1,6 @@
 package app.repository;
+// Define métodos para operações de banco de dados relacionadas à entidade Produto
+
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	
 	public List<Produto> findByNomeProd(String nomeProd);
 
-	
+	// É usada como filtro, se algum parametro acontecer vai ser filtrado
 	@Query("FROM Produto p"
 			+ " WHERE p.valorProd > :valorProd")
 	public List<Produto> findByValorProd(double valorProd);

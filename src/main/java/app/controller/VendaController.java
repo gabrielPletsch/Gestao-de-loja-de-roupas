@@ -1,4 +1,5 @@
 package app.controller;
+//Responsável por receber as requisições HTTP,
 
 import java.util.List;
 
@@ -18,16 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 import app.entity.Venda;
 import app.service.VendaService;
 
-
+//Permite criar controladores que retornam dados diretamente no corpo das respostas HTTP
 @RestController
+//Usada para mapear solicitações HTTP e o URL
 @RequestMapping("/api/venda")
 public class VendaController {
 	
+	// Dependências automática elimina a necessdidade de configurar manualmente XML ou JAVA
 	@Autowired
-	private VendaService vendaService;
+	private VendaService vendaService;//Referência para Service
 	
-	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Venda venda){
+	@PostMapping("/save")//endpoint para http save
+	public ResponseEntity<String> save(@RequestBody Venda venda){//recebe um objeto do "Front/Json/Postman"
 		
 		try {
 			String mensagem = this.vendaService.save(venda);

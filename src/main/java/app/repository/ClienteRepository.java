@@ -1,4 +1,5 @@
 package app.repository;
+// Define métodos para operações de banco de dados relacionadas à entidade Cliente
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public interface ClienteRepository extends JpaRepository<Cliente,Long> {
 	
 	public List<Cliente> findByCpfCliente (String cpfCliente);
 	
-	@Query("FROM Cliente c WHERE c.telefoneCliente > :telefoneCliente" )
+	// É usada como filtro, se algum parametro acontecer vai ser filtrado
+	@Query("FROM Cliente c "
+			+ "WHERE c.telefoneCliente > :telefoneCliente" )
 	public List<Cliente> findByTelefoneCliente (int telefoneCliente);
 }

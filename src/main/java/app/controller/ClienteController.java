@@ -1,4 +1,5 @@
 package app.controller;
+// Responsável por receber as requisições HTTP,
 
 import java.util.List;
 
@@ -18,20 +19,23 @@ import org.springframework.web.bind.annotation.RestController;
 import app.entity.Cliente;
 import app.service.ClienteService;
 
+// Permite criar controladores que retornam dados diretamente no corpo das respostas HTTP
 @RestController
+// Usada para mapear solicitações HTTP e o URL 
 @RequestMapping("/api/cliente")
 public class ClienteController {
 	
+	// Dependências automática elimina a necessdidade de configurar manualmente XML ou JAVA
 	@Autowired
-	private ClienteService clienteService;
+	private ClienteService clienteService; //Referência para Service
 	
-	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Cliente cliente)
+	@PostMapping("/save") //endpoint para http save
+	public ResponseEntity<String> save(@RequestBody Cliente cliente) //recebe um objeto do "Front/Json/Postman"
 	{
-		try {
-			String mensagem = this.clienteService.save(cliente);
-			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
-		} catch (Exception e) {
+		try { //Se for bem sucedida
+			String mensagem = this.clienteService.save(cliente); //responsável por realizar a lógica para salvar e retorna
+			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED); //Retornando uma mensagem se for bem sucedida
+		} catch (Exception e) { //Se acontecer algum erro
 			
 			return new ResponseEntity<String>("Ocorreu o seguinte erro"+e.getMessage(),HttpStatus.BAD_REQUEST);
 			
@@ -39,7 +43,7 @@ public class ClienteController {
 	}
 		
 	
-	@PutMapping("+")
+	@PutMapping("/update/{idClient}")
 	public ResponseEntity<String> update(@RequestBody Cliente cliente, @PathVariable long idClient){
 		try {
 			String mensagem = this.clienteService.update(idClient, cliente);
@@ -98,7 +102,6 @@ public class ClienteController {
 	
 	@DeleteMapping("/delete/{idCliente}")
 	public ResponseEntity<String> delete(@PathVariable long idCliente){
-		
 		try {
 			
 			String mensagem = this.clienteService.delete(idCliente);

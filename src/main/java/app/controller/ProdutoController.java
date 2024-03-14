@@ -1,4 +1,5 @@
 package app.controller;
+//Responsável por receber as requisições HTTP,
 
 import java.util.List;
 
@@ -18,20 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 import app.entity.Produto;
 import app.service.ProdutoService;
 
+//Permite criar controladores que retornam dados diretamente no corpo das respostas HTTP
 @RestController
-
+//Usada para mapear solicitações HTTP e o URL 
 @RequestMapping("/api/produto")
 
 public class ProdutoController {
 
+	// Dependências automática elimina a necessdidade de configurar manualmente XML ou JAVA
 	@Autowired
-	private ProdutoService produtoService;
+	private ProdutoService produtoService;//Referência para Service
 	
-	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Produto produto) {
+	@PostMapping("/save")//endpoint para HTTP save
+	public ResponseEntity<String> save(@RequestBody Produto produto) {//recebe um objeto do "Front/Json/Postman"
 
 		try {
-			String mensagem = this.produtoService.save(produto);
+			String mensagem = this.produtoService.save(produto);  //responsável por realizar a lógica e salva pela service
 			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
 
 		} catch (Exception e) {
@@ -41,12 +44,11 @@ public class ProdutoController {
 
 	}
 
-	@PutMapping("/update/{idProduto}")
-
-	public ResponseEntity<String> update(@RequestBody Produto produto, @PathVariable int idProduto) {
+	@PutMapping("/update/{idProduto}") //endpoint HTTP
+	public ResponseEntity<String> update(@RequestBody Produto produto, @PathVariable int idProduto) { //recebe um objeto
 
 		try {
-			String mensagem = this.produtoService.update(idProduto, produto);
+			String mensagem = this.produtoService.update(idProduto, produto); //atualiza um produto DB por produtoService
 			return new ResponseEntity<String>(mensagem, HttpStatus.OK);
 
 		} catch (Exception e) {
