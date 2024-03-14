@@ -113,12 +113,12 @@ public class FuncionarioController {
 		
 	}
 	
-	@GetMapping("/findByIdadeFunc")
-	public ResponseEntity<List<Funcionario>> findByIdadeFunci (@RequestParam int idadeFunc){
+	@GetMapping("/findByIdadeMaior")
+	public ResponseEntity<List<Funcionario>> findByIdadeMaior (@RequestParam int idadeFunci){
 		
 		try {
 			
-			List<Funcionario> lista = this.funcionarioService.findByIdadeFunci(idadeFunc);
+			List<Funcionario> lista = this.funcionarioService.findByIdadeMaior(idadeFunci);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -130,11 +130,11 @@ public class FuncionarioController {
 	}
 	
 	@GetMapping("/findByMatricula")
-	public ResponseEntity<List<Funcionario>> findByMatricula (@RequestParam String Matricula){
+	public ResponseEntity<List<Funcionario>> findByMatricula (@RequestParam String matricula){
 		
 		try {
 			
-			List<Funcionario> lista = this.funcionarioService.findByMatricula(Matricula);
+			List<Funcionario> lista = this.funcionarioService.findByMatricula(matricula);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {

@@ -49,8 +49,8 @@ public class FuncionarioService {
 		return this.funcionarioRepository.findByNomeFunci(nome);
 	}
 	
-	public List<Funcionario> findByIdadeFunci(int idade){
-		return this.funcionarioRepository.findByIdadeFunci(idade);
+	public List<Funcionario> findByIdadeMaior(int idadeFunci){
+		return this.funcionarioRepository.findByIdadeMaior(idadeFunci);
 	}	
 	
 	public List<Funcionario> findByMatricula(String matricula){
