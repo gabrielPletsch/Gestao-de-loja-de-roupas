@@ -32,8 +32,8 @@ public class Produto {
 	@NotNull(message = "valorProd não pode ser nulo")
 	private double valorProd;
 	
-	@ManyToMany( cascade = CascadeType.ALL )
+	/*@ManyToMany( cascade = CascadeType.ALL )
 	@JoinTable( name = "ProdutoVenda" )
-	private List<Venda> venda;
+	private List<Venda> venda;*/
 
 }

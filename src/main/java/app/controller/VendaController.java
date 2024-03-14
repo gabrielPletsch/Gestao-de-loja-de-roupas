@@ -95,12 +95,28 @@ public class VendaController {
 
 	//------
 	
-	@GetMapping("/findByNomeFunc")
-	public ResponseEntity<List<Venda>> findByNomeFunc (@RequestParam String nomeFunc){
+	@GetMapping("/findByNomeCliente")
+	public ResponseEntity<List<Venda>> findByClienteNomeCliente (@RequestParam String nomeCliente){
 		
 		try {
 			
-			List<Venda> lista = this.vendaService.findByNomeFunc(nomeFunc);
+			List<Venda> lista = this.vendaService.findByNomeCliente(nomeCliente);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/findByFuncionarioNomeFunci")
+	public ResponseEntity<List<Venda>> findByFuncionarioNomeFunci (@RequestParam String nomeFunci){
+		
+		try {
+			
+			List<Venda> lista = this.vendaService.findByFuncionarioNomeFunci(nomeFunci);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {

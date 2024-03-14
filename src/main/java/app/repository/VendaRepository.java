@@ -11,9 +11,11 @@ import app.entity.Venda;
 public interface VendaRepository extends JpaRepository<Venda, Long> {
 
 		
-	public List<Venda> findByFuncionarioNomeFunci(String nome);
+	public List<Venda> findByClienteNomeCliente(String nomeCliente);
 	
-	@Query("FROM Venda v WHERE v.valorVenda > :valorVenda")
+	public List<Venda> findByFuncionarioNomeFunci(String nomeFunci);
+	
+	@Query("FROM Venda v WHERE v.valorVenda >= :valorVenda")
 	public List<Venda> findByVendaValor(double valorVenda);
 	
 }

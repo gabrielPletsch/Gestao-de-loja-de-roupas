@@ -60,8 +60,11 @@ public class VendaService {
 		return this.vendaRepository.findByVendaValor(valorVenda);
 	}
 	
-	public List<Venda> findByNomeFunc(String nome){
-		return this.vendaRepository.findByFuncionarioNomeFunci(nome);
+	public List<Venda> findByNomeCliente(String nomeCliente){
+		return this.vendaRepository.findByClienteNomeCliente(nomeCliente);
 	}
 	
+	public List<Venda> findByFuncionarioNomeFunci(String nomeFunci){
+		return this.vendaRepository.findByFuncionarioNomeFunci(nomeFunci);
+	}
 }

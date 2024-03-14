@@ -36,13 +36,13 @@ public class Venda {
 	private double valorVenda;
 	//private double valorFinal;
 	
-	@ManyToOne (cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("venda")
-	private Funcionario funcionario;
-	
-	@ManyToOne (cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("venda")
-	private Cliente cliente;
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("venda")
+    private Cliente cliente;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("venda")
+    private Funcionario funcionario;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable (name =  "venda_produto")
