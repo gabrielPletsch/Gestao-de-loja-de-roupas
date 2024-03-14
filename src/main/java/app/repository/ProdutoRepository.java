@@ -12,6 +12,12 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	public List<Produto> findByNomeProd(String nomeProd);
 
 	
-	@Query("FROM Produto p WHERE p.valorProd > :valorProd")
+	@Query("FROM Produto p"
+			+ " WHERE p.valorProd > :valorProd")
 	public List<Produto> findByValorProd(double valorProd);
+	
+	@Query("SELECT p "
+            + "FROM Produto p "
+            + "WHERE p. valorProd<= :valorProd")
+    public List<Produto> findByPodutoValor(double valorProd);
 }

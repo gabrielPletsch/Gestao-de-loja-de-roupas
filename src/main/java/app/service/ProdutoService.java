@@ -59,5 +59,8 @@ public class ProdutoService {
 
 	}
 	
+	public List<Produto> findByPodutoValor(double valorProd){
+        return this.produtoRepository.findByPodutoValor(valorProd);
+    }
 
 }
