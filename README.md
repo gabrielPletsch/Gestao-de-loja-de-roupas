@@ -47,7 +47,7 @@ para cada entidade.
 - MYSQL CONECTOR
 
 ## Estrutura do projeto
-
+```
 📁 Gestao de loja roupa
 └── 📁 src/main/java
     ├── 📁 app.controller
@@ -77,7 +77,7 @@ para cada entidade.
 ├── 📁  src
 ├── 📁 target
 ├── 📁 POM.XML 
-
+```
 ## 💻 Trello
 
 [TRELLO](https://trello.com/b/19atZkn1/desenvolvimento-de-gestao)
