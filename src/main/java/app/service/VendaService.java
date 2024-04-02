@@ -31,17 +31,20 @@ public class VendaService {
 	//Create	
 	//For para percorrer os produtos dentro da venda e retornar o valor final
 	public String save(Venda venda) {
-		this.vendaRepository.save(venda);
-		List <Produto> produtos = venda.getProduto();
-		DecimalFormat df = new DecimalFormat("##,##"); //Formatação do Valor Final
+		double total = this.calcularValorTotal(venda.getProduto());
+		venda.setValorFinal(total);
+		vendaRepository.save(venda);
+		return " foi o valor total da compra!";
+	}
+	
+	public double calcularValorTotal (List<Produto> produtos) {
+		DecimalFormat df = new DecimalFormat("##,##"); 
 		double valorFinal = 0;
 		for (Produto produto : produtos) {		
 			valorFinal += produto.getValorProd();
 		}
 		String valorFormatado = df.format(valorFinal);
-		venda.setValorFinal(valorFinal);	//Retornar o valor final 
-		vendaRepository.save(venda);
-		return valorFormatado +" foi o valor total da compra!";
+		return valorFinal;
 	}
 	 
 	//Read
