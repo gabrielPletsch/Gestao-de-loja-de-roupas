@@ -23,6 +23,6 @@ import app.entity.Produto;
 			listaProd.add(new Produto(1, "camiseta", 50));
 			listaProd.add(new Produto(2, "calca", 50));
 			double resultado = this.vendaService.calcularValorTotal(listaProd);
-			assertEquals(300, resultado);
+			assertEquals(100, resultado);
 		}
 }
