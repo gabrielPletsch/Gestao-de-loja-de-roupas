@@ -1,6 +1,7 @@
 package app.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -44,6 +45,10 @@ public class VendaControllerTest {
 		//MOCK DE FINDBYID
 		Venda objetoASerRetornado = new Venda(3, "GHIABC", 60, 0, null, null, null);
 		when(this.vendaRepository.findById(1L)).thenReturn(Optional.of(objetoASerRetornado));
+
+		
+	    
+	    
 
 	}
 
@@ -97,5 +102,27 @@ public class VendaControllerTest {
 
 	}
 	
+	@Test
+	void testUpdate() {
+		
+		Venda vendaExistente = new Venda(4, "abc", 50, 0, null, null, null);
+		Venda vendaAtualizada = new Venda(1, "xyz", 60, 0, null, null, null);
+	    long idVenda = 1L;
+		
+		ResponseEntity<String> response = vendaController.update(vendaAtualizada, idVenda);
+	    
+	    assertEquals(HttpStatus.CREATED, response.getStatusCode());
+	   
+	    when(vendaRepository.findById(idVenda)).thenReturn(Optional.of(vendaExistente));
+	    when(vendaRepository.save(vendaAtualizada)).thenReturn(vendaAtualizada);
+	}
+
+	@Test
+    void testDelete() {
+        long idVenda = 1L;
+        ResponseEntity<String> response = vendaController.delete(idVenda);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        verify(vendaRepository).deleteById(idVenda);
+    }
 
 }

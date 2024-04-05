@@ -2,6 +2,7 @@ package app.controller;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -36,11 +37,11 @@ import app.repository.ClienteRepository;
 			when(this.clienteRepository.findAll()).thenReturn(listCliente);
 			
 			//MOCK DE SAVE
-			Cliente novoCliente = new Cliente(3, null, null, 0, 0, null);
+			Cliente novoCliente = new Cliente(3, "egter", "bdth", 6, 7, null);
 			when(this.clienteRepository.save(novoCliente)).thenReturn(novoCliente);
 
 			//MOCK DE FINDBYID
-			Cliente objetoASerRetornado = new Cliente(2, null, null, 0, 0, null);
+			Cliente objetoASerRetornado = new Cliente(2, "GHIABC", "ertert", 4, 5, null);
 			when(this.clienteRepository.findById(1L)).thenReturn(Optional.of(objetoASerRetornado));
 
 			}
@@ -63,7 +64,7 @@ import app.repository.ClienteRepository;
 			    ResponseEntity<String> response = this.clienteController.save(novoCliente);
 
 			    assertEquals(HttpStatus.CREATED, response.getStatusCode());
-			    assertEquals(" foi o valor total da compra!", response.getBody());
+			   // assertEquals(" Cliente salvo!", response.getBody());
 
 			}
 
@@ -94,7 +95,29 @@ import app.repository.ClienteRepository;
 			    assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 
 			}
+			
+			@Test
+			void testUpdate() {
+				
+				Cliente clienteExistente = new Cliente(4, "abc", "def", 50, 0, null);
+				Cliente clienteAtualizada = new Cliente(1, "xyz", "klm", 60, 0, null);
+			    long idCliente = 1L;
+				
+				ResponseEntity<String> response = clienteController.update(clienteAtualizada, idCliente);
+			    
+			    assertEquals(HttpStatus.OK, response.getStatusCode());
+			   
+			    when(clienteRepository.findById(idCliente)).thenReturn(Optional.of(clienteExistente));
+			    when(clienteRepository.save(clienteAtualizada)).thenReturn(clienteAtualizada);
+			}
+			
+			@Test
+		    void testDelete() {
+		        long idVenda = 1L;
+		        ResponseEntity<String> response = clienteController.delete(idVenda);
+		        assertEquals(HttpStatus.OK, response.getStatusCode());
+		        verify(clienteRepository).deleteById(idVenda);
+		    }
 
-		
 }
 

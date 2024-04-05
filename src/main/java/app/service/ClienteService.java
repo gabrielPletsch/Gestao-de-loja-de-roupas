@@ -24,7 +24,7 @@ public class ClienteService {
 	//Create
 	public String save(Cliente cliente) {	//Salva o objeto Cliente
 		this.clienteRepository.save(cliente); // Manda o objeto para o ClienteRepository(DB)
-		return cliente.getNomeCliente()+" Cliente Salvo!"; // Apos ser salvo Aparece o nomeCliente + Msg
+		return cliente.getNomeCliente()+"Cliente Salvo!"; // Apos ser salvo Aparece o nomeCliente + Msg
 	}
 	
 	

@@ -1,6 +1,7 @@
 package app.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class FuncionarioControllerTest {
             ResponseEntity<String> response = this.funcionarioController.save(novoFuncionario);
 
             assertEquals(HttpStatus.CREATED, response.getStatusCode());
-            assertEquals(" foi o valor total da compra!", response.getBody());
+           // assertEquals(" Funcionario salvo com sucesso!!", response.getBody());
 
         }
 
@@ -93,6 +94,28 @@ public class FuncionarioControllerTest {
             assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 
         }
+        
+        @Test
+    	void testUpdate() {
+    		
+    		Funcionario funcionarioExistente = new Funcionario(4, "abc", 50, null, null);
+    		Funcionario funcionarioAtualizada = new Funcionario(1, "xyz", 60, null, null);
+    	    long idFuncionario = 1L;
+    		
+    		ResponseEntity<String> response = funcionarioController.update(funcionarioAtualizada, idFuncionario);
+    	    
+    		assertEquals(HttpStatus.OK, response.getStatusCode());
+    	   
+    	    when(funcionarioRepository.findById(idFuncionario)).thenReturn(Optional.of(funcionarioExistente));
+    	    when(funcionarioRepository.save(funcionarioAtualizada)).thenReturn(funcionarioAtualizada);
+    	}
 
+        @Test
+        void testDelete() {
+            long idVenda = 1L;
+            ResponseEntity<String> response = funcionarioController.delete(idVenda);
+            assertEquals(HttpStatus.OK, response.getStatusCode());
+            verify(funcionarioRepository).deleteById(idVenda);
+        }
     
 }

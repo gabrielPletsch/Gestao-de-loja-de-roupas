@@ -45,7 +45,7 @@ public class ProdutoController {
 	}
 
 	@PutMapping("/update/{idProduto}") //endpoint HTTP
-	public ResponseEntity<String> update(@RequestBody Produto produto, @PathVariable int idProduto) { //recebe um objeto
+	public ResponseEntity<String> update(@RequestBody Produto produto, @PathVariable long idProduto) { //recebe um objeto
 
 		try {
 			String mensagem = this.produtoService.update(idProduto, produto); //atualiza um produto DB por produtoService
